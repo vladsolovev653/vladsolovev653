@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "10be283a-da6c-413c-bf40-8908c53d76f4",
+		"name": "Solovev Todo List",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Test-case",
+			"item": [
+				{
+					"name": "openTodo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://todo-app-sky.herokuapp.com/",
+							"protocol": "https",
+							"host": [
+								"todo-app-sky",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTask",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"solovev\",\"completed\":false    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://todo-app-sky.herokuapp.com/",
+							"protocol": "https",
+							"host": [
+								"todo-app-sky",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "openWithNewTask",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://todo-app-sky.herokuapp.com/",
+							"protocol": "https",
+							"host": [
+								"todo-app-sky",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "completeTask",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"completed\":true}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://todo-app-sky.herokuapp.com/16513",
+							"protocol": "https",
+							"host": [
+								"todo-app-sky",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"16513"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "openWithCompletedTask",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://todo-app-sky.herokuapp.com/",
+							"protocol": "https",
+							"host": [
+								"todo-app-sky",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTask",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://todo-app-sky.herokuapp.com/16527",
+							"protocol": "https",
+							"host": [
+								"todo-app-sky",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"16527"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "openW/oTask",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://todo-app-sky.herokuapp.com/",
+							"protocol": "https",
+							"host": [
+								"todo-app-sky",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mockoon",
+			"item": [
+				{
+					"name": "getLocalhost",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "result",
+								"value": "empty list",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTaskLocalhost",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEmptyList",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "result",
+								"value": "empty list",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTitleMistake",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"mistake\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

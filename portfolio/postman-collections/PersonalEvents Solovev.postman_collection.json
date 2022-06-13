@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "cac7d247-d06c-4732-8bc5-f9e0cc72ff8d",
+		"name": "PersonalEvents Solovev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Positive",
+			"item": [
+				{
+					"name": "PE valid future",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"PersonalId\"\r",
+									"var value = pm.response.json().data.payload.id\r",
+									"pm.collectionVariables.set(key, value);\r",
+									"\r",
+									"var key = \"startAt\"\r",
+									"var value = pm.response.json().data.startAt\r",
+									"pm.collectionVariables.set(key, value);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2022-05-24T12:00:00+03:00\",\r\n    \"endAt\" : \"2022-05-24T12:30:00+03:00\",\r\n    \"title\" : \"solovev\",\r\n    \"description\" : \"test\",\r\n    \"color\" : \"#FAC641\",\r\n    \"backgroundColor\" : \"#FFF7C7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update all params",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2022-05-25T11:00:00+03:00\",\r\n    \"endAt\" : \"2022-05-25T11:30:00+03:00\",\r\n    \"title\" : \"solovev2\",\r\n    \"description\" : \"tasfasfafs\",\r\n    \"color\" : \"#D478F1\",\r\n    \"backgroundColor\" : \"#F9EBFF\",\r\n    \"id\" : {{PersonalId}},\r\n    \"oldStartAt\" : \"2022-05-24T12:00:00+03:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v2/schedule/updatePersonal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"updatePersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update future date to past",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2022-05-20T12:00:00+03:00\",\r\n    \"endAt\" : \"2022-05-20T12:30:00+03:00\",\r\n    \"title\" : \"solovev\",\r\n    \"description\" : \"test\",\r\n    \"color\" : \"#FAC641\",\r\n    \"backgroundColor\" : \"#FFF7C7\",\r\n    \"id\" : {{PersonalId}},\r\n    \"oldStartAt\" : \"2022-05-24T12:00:00+03:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v2/schedule/updatePersonal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"updatePersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete PE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : {{PersonalId}},\r\n    \"startAt\" : \"{{startAt}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v2/schedule/removePersonal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"removePersonal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Negative",
+			"item": [
+				{
+					"name": "PE invalid date",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2022-20-24T12:00:00+03:00\",\r\n    \"endAt\" : \"2022-20-24T12:30:00+03:00\",\r\n    \"title\" : \"solovev\",\r\n    \"description\" : \"test\",\r\n    \"color\" : \"#FAC641\",\r\n    \"backgroundColor\" : \"#FFF7C7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PE w/out color",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2022-05-24T12:00:00+03:00\",\r\n    \"endAt\" : \"2022-05-24T12:30:00+03:00\",\r\n    \"title\" : \"solovev\",\r\n    \"description\" : \"test\",\r\n    \"backgroundColor\" : \"#FFF7C7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PE w/out title",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2022-05-24T12:00:00+03:00\",\r\n    \"endAt\" : \"2022-05-24T12:30:00+03:00\",\r\n    \"description\" : \"test\",\r\n    \"color\" : \"#FAC641\",\r\n    \"backgroundColor\" : \"#FFF7C7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PE w/out date",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"solovev\",\r\n    \"description\" : \"test\",\r\n    \"color\" : \"#FAC641\",\r\n    \"backgroundColor\" : \"#FFF7C7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PE description more 500 in future",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startAt\" : \"2022-05-24T12:00:00+03:00\",\r\n    \"endAt\" : \"2022-05-24T12:30:00+03:00\",\r\n    \"title\" : \"solovev\",\r\n    \"description\" : \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\r\n    \"color\" : \"#FAC641\",\r\n    \"backgroundColor\" : \"#FFF7C7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v2/schedule/createPersonal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete invalid PE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : {{PersonalId}},\r\n    \"startAt\" : \"2022-05-24T12:00:00+03:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v2/schedule/removePersonal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"schedule",
+								"removePersonal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api-teachers.skyeng.ru"
+		},
+		{
+			"key": "myToken",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VySWQiOjEwMzM4NzM2LCJpZGVudGl0eSI6InRlc3QtbW9iaWxlMUBza3llbmcucnUiLCJpZGVudGl0eUxvZ2luIjpudWxsLCJpZGVudGl0eUVtYWlsIjoidGVzdC1tb2JpbGUxQHNreWVuZy5ydSIsImlkZW50aXR5UGhvbmUiOiIrMTY1MDU1NTEyMTIiLCJuYW1lIjoidGVzdGVycyIsInN1cm5hbWUiOiJUZXN0MSIsImVtYWlsIjoidGVzdC1tb2JpbGUxQHNreWVuZy5ydSIsInVpTGFuZ3VhZ2UiOiJydSIsImxvY2FsZSI6InJ1Iiwic2VydmljZUxvY2FsZSI6bnVsbCwidWFzIjozMCwiand0VHlwZSI6MSwianRpIjoiajNQT2FXSGdoMlNPR2MyQnhkTVlWVWRLaDhKeUoyUW0iLCJicmFuZCI6bnVsbCwiZXhwIjoxNjUyODY0NzAyLCJhdmF0YXJVcmwiOiJodHRwczpcL1wvYXV0aC1hdmF0YXJzLXNreWVuZy5pbWdpeC5uZXRcLzEwMzM4NzM2XC8xZGQ5MzVhOC1kZjIxLTQ2YzYtYTAzYy0zNWU5MWUxZGVkZWY_YXV0bz1mb3JtYXQlMkNlbmhhbmNlJmZpdD1jcm9wJmg9MjAwJml4bGliPXBocC0yLjEuMSZxPTc1JnNhdD04JnNoYXJwPTEwJnZpYj04Jnc9MjAwIiwiYVR5cGUiOiJVU0VSTkFNRV9QQVNTV09SRCIsImFUaW1lIjoxNjUwNTY3ODE5LCJyb2xlcyI6WyJST0xFX1RFQUNIRVIiLCJST0xFX0NSTTJfVEVBQ0hFUl9BQ0NFU1MiLCJST0xFX1RUQ19VU0FHRSIsIlJPTEVfVklNQk9YX1RFQUNIRVJfVVNBR0UiLCJST0xFX1ZJTUJPWF9DUkVBVEVfU0NSRUVOSU5HX1RFU1QiXX0.i48pDu6iVsOqd62nehoDZ0sJZRBh_dn3eFODgzH2_ZfeaWXxYcCK8zKzeXGWiYfz3jCFEx02npYdr2_mWSXIQuyXYWysBIR006lkImdurD6FxpI6ESN4kfHnYf5ojCb5R4Mcop5E7efdFEJXQ9TN0415iQsXMk5ht1SRG20eAkOBl960BJOCxeMRNfBb2kgXUHdwaipdJQq9mVu6zEUpdjKB9qLO_zEIg4LaSUhUeciPADjTy3kopthJh2rlAaeZaR9CnclFt1eTsEPWFDYymKhy6x8F31IGo4pQzojx607YurJZM5oiyPJTLOZB-EcS2ZJMYaltNqqfimi_6Z85HjXKCCeQA6PMXhfqlqb5oWt98N_dgbNInicx4dhZR9qImF7otZrVQFrF3EM4XA9-aQMNtmOoJNKlXNMhFEwbwXCvEDE5UKpgbkQ-KnrWxwwmsK59I5bJm9SJ_zyik-9Jk0XwhUhkQ7FKhZYAuoGwtxHwes-AE7AY1mNT6oXigIHoaVkugQxjLlVOi1jECinW59jG2JOqlSC_oUb24jzpeSfyXEgx6oeP2QJNi5v6DGe2nwhOFiIG1iLMYJe8G02e8RybQdmELL6_qWjVpK8UBEU8rz0Y18xLUUF3WwVG5Wzab_Vm81eEvyl0ImCpy7RjCRpc7vlKxcfEMyeX4uXZml4",
+			"type": "string"
+		},
+		{
+			"key": "PersonalId",
+			"value": ""
+		},
+		{
+			"key": "startAt",
+			"value": ""
+		}
+	]
+}
